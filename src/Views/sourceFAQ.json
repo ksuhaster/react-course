@@ -1,18 +1,18 @@
 [
 	{
-		"question": "What is your name?",
-		"answer": "My name is Andrii"
+		"question": "What business are you doing?",
+		"answer": "In the past few years India has made attempts to get back several historic items. Some historians claim that the Kohinoor was taken away from India by force."
     },
 	{
-		"question": "2What is your name?",
-		"answer": "2My name is Andrii"
+		"question": "What colors do you like?",
+		"answer": "green, orange"
     },
 	{
-		"question": "3What is your name?",
-		"answer": "3My name is Andrii"
+		"question": "Do you have some style suggestions?",
+		"answer": "no"
     },
 	{
-		"question": "4What is your name?",
-		"answer": "4My name is Andrii"
+		"question": "Do you have a logotype or brand identity?",
+		"answer": "no, make it"
     }
 ]

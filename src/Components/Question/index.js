@@ -11,7 +11,9 @@ export const Question = (props) => {
     <div className="question" onClick = { open }>
     { props.question }
     { counter }
+    <span className="question-sign">+</span>
     </div>
+    <div className="answer">{ props.answer }</div>
     </>
   )
 };

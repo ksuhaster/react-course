@@ -13,6 +13,7 @@ export const FAQ = (props) => {
 
     return (
         <>
+        <h2 className="faq-text">PROJECT BRIEF</h2>
             { questions }
         </>
     )
