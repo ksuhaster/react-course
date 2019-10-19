@@ -1,18 +1,19 @@
 import React from 'react';
 import './styles.scss';
-import { useAccordeon } from './useAccordeon';
+import { Question } from '../Question';
 
 export const FAQ = (props) => {
-    const { counter, open } = useAccordeon(undefined);
-    const questions = props.source
+    const questions = props.source.map((source_one, i) => (
+        <Question
+            key = { i }
+            question = { source_one.question }
+            answer = { source_one.answer }
+        />
+    ));
 
     return (
-      <>
-      <span className="question" onClick = { open }>
-      z
-      { counter }
-      z
-      </span>
-      </>
+        <>
+            { questions }
+        </>
     )
   };

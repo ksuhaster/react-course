@@ -5,13 +5,13 @@ export const useAccordeon = (initialValue) => {
     const [counter, setCounter] = useState(initialValue);
 
     const open = () => {
-        setCounter((prevCounter, newCounter) => {
-            if (prevCounter === newCounter) {
+        setCounter((prevCounter) => {
+            if (typeof prevCounter !== undefined) {
                 console.log('close');
                 return undefined;
             } else {
-                console.log('open ' + newCounter);
-                return newCounter;
+                console.log('open ' + prevCounter);
+                return prevCounter;
             }
         });
     }
