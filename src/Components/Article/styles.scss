@@ -1,0 +1,22 @@
+.article {
+    width: 300px;
+    //height: 600px;
+    float: left;
+    padding: 10px;
+    margin: 10px;
+}
+
+.article-title {
+    color: #121212;
+    text-decoration: none;
+}
+
+.article-title:hover {
+    color: #0069ff;
+    text-decoration: none;
+}
+
+.article-img{
+    width: 300px;
+    height: 300px;
+}
