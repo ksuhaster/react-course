@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './styles.scss';
 import { useCounter } from './useCounter';
 
 export const LikesCounter = (props) => {
@@ -7,11 +7,11 @@ export const LikesCounter = (props) => {
 
   return (
     <>
-    <button onClick = { increase }>
+    <span className="heart" onClick = { increase }>
     <i className="fa fa-heart"></i>
     &nbsp;
     { counter }
-    </button>
+    </span>
     </>
   )
 };
