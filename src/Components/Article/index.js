@@ -7,7 +7,9 @@ import { Tag } from '../../Assets/Tag';
 
 export const Article = ({title, description, published, likes, comments, image, tags}) => {
   const tags_group = tags.map((tag, i) => (
-    <Tag source = { tag }/>
+    <Tag key = { i }
+         source = { tag }
+    />
   ));
   published = new Date(published)
   const published_formatted = ('0' + published.getDate()).slice(-2) + '.'
@@ -30,28 +32,30 @@ export const Article = ({title, description, published, likes, comments, image, 
   return (
     <>
         <span className="article">
-          <table width="100%" cellspacing="0" cellpadding="0" border="0">
-            <tr>
-              <td style={ tdstyleImage } colspan="2">
-                { tags_group }
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" className="td-text-left td-text-main">
-                <h3><a className="article-title" href="/news/">{ title }</a></h3>
-                <p>{description}</p>
-              </td>
-            </tr>
-            <tr>
-              <td align="left" valign="bottom" nowrap className="td-text">{ published_formatted }</td>
-              <td align="right" valign="bottom" nowrap className="td-text-right">
-                  <CommentsCounter counts = { comments } />
-                  &nbsp;
-                  <LikesCounter counts = { likes } />
-                  &nbsp;
-                  <Share />
-              </td>
-            </tr>
+          <table width="100%" cellSpacing="0" cellPadding="0" border="0">
+            <tbody>
+              <tr>
+                <td style={ tdstyleImage } colSpan="2">
+                  { tags_group }
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="2" className="td-text-left td-text-main">
+                  <h3><a className="article-title" href="/news/">{ title }</a></h3>
+                  <p>{description}</p>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" valign="bottom" nowrap="true" className="td-text">{ published_formatted }</td>
+                <td align="right" valign="bottom" nowrap="true" className="td-text-right">
+                    <CommentsCounter counts = { comments } />
+                    &nbsp;
+                    <LikesCounter counts = { likes } />
+                    &nbsp;
+                    <Share />
+                </td>
+              </tr>
+            </tbody>
           </table>
 
         </span>

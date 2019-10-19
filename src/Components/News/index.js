@@ -5,7 +5,8 @@ import { Article } from '../Article';
 export const News = (props) => {
   const source = props.source;
   const articles = source.map((source_one, i) => (
-    <Article 
+    <Article
+      key = { i }
       title = { source_one.title }
       description = { source_one.description }
       published = { source_one.published }
