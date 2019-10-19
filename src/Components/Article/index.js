@@ -5,34 +5,56 @@ import { LikesCounter } from '../../Assets/LikesCounter';
 import { Share } from '../../Assets/Share';
 import { Tag } from '../../Assets/Tag';
 
-export const Article = (props) => {
-  const source = props.source;
-  const tags = props.source.tags.map((tag, i) => (
-    <Tag text = { tag }/>
+export const Article = ({title, description, published, likes, comments, image, tags}) => {
+  const tags_group = tags.map((tag, i) => (
+    <Tag source = { tag }/>
   ));
+  published = new Date(published)
+  const published_formatted = ('0' + published.getDate()).slice(-2) + '.'
+    + ('0' + (published.getMonth()+1)).slice(-2) + '.'
+    + published.getFullYear();
+
+  var tdstyleImage = {
+    backgroundImage: `url(${ image })`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '300px 300px',
+    width: '300px',
+    height: '250px',
+    verticalAlign: 'bottom',
+    paddingBottom: '20px',
+    paddingLeft: '30px',
+    borderTopLeftRadius: '5px',
+    borderTopRightRadius: '5px',
+  }
 
   return (
     <>
-        <div className="article">
-            {/*как вставить background-image: {img}? */}
-            <img className="article-img" src={ source.image } />
-            { tags }
-            <h3><a className="article-title" href="/news/">{ source.title }</a></h3>
-            <p>{source.description}</p>
-
-            <table width="100%">
+        <span className="article">
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
             <tr>
-            <td align="left">15.07.2017</td>
-            <td align="right">
-                {/*этим тоже надо будет пробросить значения для отображения*/}
-                <CommentsCounter />
-                <LikesCounter />
-                <Share />
-            </td>
+              <td style={ tdstyleImage } colspan="2">
+                { tags_group }
+              </td>
             </tr>
-            </table>
+            <tr>
+              <td colspan="2" className="td-text-left td-text-main">
+                <h3><a className="article-title" href="/news/">{ title }</a></h3>
+                <p>{description}</p>
+              </td>
+            </tr>
+            <tr>
+              <td align="left" valign="bottom" nowrap className="td-text">{ published_formatted }</td>
+              <td align="right" valign="bottom" nowrap className="td-text-right">
+                  <CommentsCounter counts = { comments } />
+                  &nbsp;
+                  <LikesCounter counts = { likes } />
+                  &nbsp;
+                  <Share />
+              </td>
+            </tr>
+          </table>
 
-        </div>
+        </span>
     </>
   )
 };
