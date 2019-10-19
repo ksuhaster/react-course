@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.scss';
-import { useAccordeon } from './useAccordeon';
 
 export const Question = (props) => {
-  const { counter, open } = useAccordeon(undefined);
+  const [ counter, setCounter ] = useState(undefined);
+
+  const increase = () => {
+    console.log('increase ');
+    setCounter((prevCounter) => prevCounter + 1);
+  }
+
+  const decrease = () => {
+    console.log('decrease');
+    setCounter((prevCounter) => prevCounter - 1);
+  }
 
   return (
     <>
-    {/* XXX как в open пробросить текущий props.key? */}
-    <div className="question" onClick = { open }>
+    <div className="question" onClick = { increase }>
     { props.question }
     { counter }
     <span className="question-sign">+</span>
