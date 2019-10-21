@@ -21,7 +21,7 @@ export const FAQ = (props) => {
                 key = { 'question' + i }
                 onClick = {() => clickQuestion(i) }>
             { source_one.question }
-            <span className="question-sign">
+            <span className="question-sign" key = { 'question-sign' + i }>
                 {(whoOpen === i ? '-' : '+')}
             </span>
         </div>

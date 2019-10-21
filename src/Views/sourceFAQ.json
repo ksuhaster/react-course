@@ -1,21 +1,17 @@
 [
 	{
-		"id": 1,
 		"question": "What business are you doing?",
 		"answer": "In the past few years India has made attempts to get back several historic items. Some historians claim that the Kohinoor was taken away from India by force."
     },
 	{
-		"id": 2,
 		"question": "What colors do you like?",
 		"answer": "green, orange"
     },
 	{
-		"id": 3,
 		"question": "Do you have some style suggestions?",
 		"answer": "no"
     },
 	{
-		"id": 4,
 		"question": "Do you have a logotype or brand identity?",
 		"answer": "no, make it"
     }
