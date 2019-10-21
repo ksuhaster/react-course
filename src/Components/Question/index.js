@@ -3,6 +3,18 @@ import './styles.scss';
 
 export const Question = (props) => {
 
+  const [ isOpen, setIsOpen ] = useState(false);
+
+  const clickQuestion = (e) => {
+    console.log('clickQuestion');
+    setIsOpen(() => {
+      console.log('setIsOpen');
+      //console.log('target.id', e.target.id);
+      return !isOpen;
+    })
+  }
+
+  /*
   const [ currentOpen, setCurrentOpen ] = useState(undefined);
 
   const openQuestion = (e) => {
@@ -24,16 +36,24 @@ export const Question = (props) => {
     })
   }
 
+  onClick = {(e) => openQuestion(e) }
+  */
+
   return (
     <>
-    <div className="question" onClick = {(e) => openQuestion(e) } id = {props.id}>
-    { props.question }
-    
-    { currentOpen }
-    
-    <span className="question-sign">+</span>
-    </div>
-    <div className="answer" id = { "answer" + props.id }>{ props.answer }</div>
+      <div className="question"
+           id = {props.id}
+           onClick = {(e) => clickQuestion(e) }>
+        { props.question }
+        <span className="question-sign">+</span>
+      </div>
+      
+      <div className={"answer " + (isOpen ? 'answer-show' : 'answer-hide')}
+          id = { "answer" + props.id }>
+          { props.answer }
+      </div>
     </>
   )
 };
+
+
