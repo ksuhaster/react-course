@@ -7,11 +7,11 @@ export const LikesCounter = (props) => {
 
   return (
     <>
-    <span className="heart" onClick = { increase }>
-    <i className="fa fa-heart"></i>
-    &nbsp;
-    { counter }
-    </span>
+      <span className="heart" onClick = { increase }>
+        <i className="fa fa-heart"></i>
+        &nbsp;
+        { counter }
+      </span>
     </>
   )
 };
