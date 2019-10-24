@@ -1,36 +1,34 @@
 import React, { useState } from 'react';
 import './styles.scss';
 
-export const FAQ = (props) => {
+export const FAQ = () => {
+    const source = require('./sourceFAQ.json')
 
     const [ whoOpen, setWhoOpen ] = useState(false);
 
     const clickQuestion = (i) => {
       setWhoOpen(() => {
         if (i === whoOpen) {
-            return undefined;  // same question, close
+            return null;  // same question, close
         } else {
             return i;
         };
       })
     }
 
-    const questions = props.source.map((source_one, i) => (
-        <>
-        <div className="question"
-                key = { 'question' + i }
-                onClick = {() => clickQuestion(i) }>
-            { source_one.question }
-            <span className="question-sign" key = { 'question-sign' + i }>
-                {(whoOpen === i ? '-' : '+')}
-            </span>
-        </div>
+    const questions = source.map((source_one, i) => (
+        <div key = { 'question' + i }>
+            <div className="question" onClick = {() => clickQuestion(i) }>
+                { source_one.question }
+                <span className="question-sign" key = { 'question-sign' + i }>
+                    {(whoOpen === i ? '-' : '+')}
+                </span>
+            </div>
 
-        <div className={"answer " + (whoOpen === i ? 'answer-show' : 'answer-hide')}
-            key = { "answer" + i }>
-            { source_one.answer }
+            <div className={"answer " + (whoOpen === i ? 'answer-show' : 'answer-hide')}>
+                { source_one.answer }
+            </div>
         </div>
-        </>
     ));
 
     return (
