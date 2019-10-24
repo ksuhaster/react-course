@@ -3,7 +3,6 @@ import './styles.scss';
 import { Article } from '../Article';
 import { useNews } from './useNews';
 
-
 export const News = () => {
   const { posts } = useNews();
 
@@ -17,6 +16,7 @@ export const News = () => {
   return (
     <>
       <div className="grey">
+        <span className={(posts.length === 0 ? 'loader-show' : 'loader-hide')}>Загрузка данных...</span>
         { articles }
       </div>
     </>
