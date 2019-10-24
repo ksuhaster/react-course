@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const CommentsCounter = () => {
+export const CommentsCounter = (props) => {
   return (
-    '💭10'
+    <>
+    💭{ props.counts }
+    </>
   )
 };

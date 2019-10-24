@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const LikesCounter = () => {
+export const LikesCounter = (props) => {
   return (
-    '💙316'
+    <>
+    💙 { props.counts }
+    </>
   )
 };

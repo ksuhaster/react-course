@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles.scss';
 
-export const Tag = () => {
+export const Tag = (props) => {
   return (
-    <span className="tag">literature</span>
+    <span className="tag">{ props.source }</span>
   )
 };
