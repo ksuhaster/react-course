@@ -5,19 +5,20 @@ import { LikesCounter } from '../../Assets/LikesCounter';
 import { Share } from '../../Assets/Share';
 import { Tag } from '../../Assets/Tag';
 
-export const Article = ({title, description, published, likes, comments, image, tags}) => {
-  const tags_group = tags.map((tag, i) => (
+export const Article = ({title, description, created, likes, comments, poster, tags}) => {
+  var tags_arr = tags.split(',').map(item => item.trim());
+  const tags_group = tags_arr.map((tag, i) => (
     <Tag key = { i }
          source = { tag }
     />
   ));
-  published = new Date(published)
-  const published_formatted = ('0' + published.getDate()).slice(-2) + '.'
-    + ('0' + (published.getMonth()+1)).slice(-2) + '.'
-    + published.getFullYear();
+  created = new Date(created)
+  const created_formatted = ('0' + created.getDate()).slice(-2) + '.'
+    + ('0' + (created.getMonth()+1)).slice(-2) + '.'
+    + created.getFullYear();
 
   var tdstyleImage = {
-    backgroundImage: `url(${ image })`,
+    backgroundImage: `url(${ poster })`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: '300px 300px',
     width: '300px',
@@ -46,7 +47,7 @@ export const Article = ({title, description, published, likes, comments, image, 
                 </td>
               </tr>
               <tr>
-                <td align="left" valign="bottom" nowrap="true" className="td-text">{ published_formatted }</td>
+                <td align="left" valign="bottom" nowrap="true" className="td-text">{ created_formatted }</td>
                 <td align="right" valign="bottom" nowrap="true" className="td-text-right">
                     <CommentsCounter counts = { comments } />
                     &nbsp;
