@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './styles.scss';
 import { Article } from '../Article';
+import { Loader } from '../../Assets/Loader';
 import { useNews } from './useNews';
 
 export const News = () => {
   const { posts } = useNews();
   const [showLoader, setShowLoader] = useState(true);
 
-  const articles = posts.map((source_one) => (
+  const articles = posts.map((article) => (
     <Article
-      key = { source_one.objectId }
-      {...source_one}
+      key = { article.objectId }
+      {...article}
     />
   ));
 
@@ -23,7 +24,7 @@ export const News = () => {
   return (
     <>
       <div className="grey">
-        <span className={(showLoader ? 'loader-show' : 'loader-hide')}>Загрузка данных...</span>
+        {(showLoader ? <Loader  /> : '')}
         { articles }
       </div>
     </>
