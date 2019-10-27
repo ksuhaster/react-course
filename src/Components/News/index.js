@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles.scss';
+import styles from './styles.module.scss';
 import { Article } from '../Article';
 import { Loader } from '../../Assets/Loader';
 import { useNews } from './useNews';
@@ -8,7 +8,7 @@ export const News = () => {
   const { posts } = useNews();
   const [showLoader, setShowLoader] = useState(true);
 
-  const articles = posts.map((article) => (
+  const articles = posts.map(article => (
     <Article
       key = { article.objectId }
       {...article}
@@ -22,11 +22,9 @@ export const News = () => {
   }, [posts]);
 
   return (
-    <>
-      <div className="grey">
-        {(showLoader ? <Loader  /> : '')}
-        { articles }
-      </div>
-    </>
+    <section className = { styles.news }>
+      {(showLoader ? <Loader  /> : '')}
+      { articles }
+    </section>
   )
 };

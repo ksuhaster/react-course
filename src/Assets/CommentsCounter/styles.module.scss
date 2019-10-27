@@ -1,0 +1,12 @@
+.commentsCounter {
+    font-family: Helvetica;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 35px;
+
+    &::before {
+        display: inline;
+        font-size: 11px;
+        opacity: 0.6;
+    }
+}
