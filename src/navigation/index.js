@@ -32,6 +32,9 @@ export const Routes = () => (
                 component = { Unknown }
                 path = { book.unknown }
             />
+            <Route path="/login">
+                <LoginPage />
+            </Route>
            <Redirect to = {book.unknown } />
         </Switch>
     </>
