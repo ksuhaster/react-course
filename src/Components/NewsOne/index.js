@@ -5,6 +5,7 @@ import { Article } from '../Article';
 import { Loader } from '../../Assets/Loader';
 import { useNews } from '../News/useNews';
 import { history } from '../../navigation/history';
+import { book } from '../../navigation/book';
 
 export const NewsOne = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ export const NewsOne = () => {
     if (posts.length > 0) {
       setShowLoader(false);
       if (article === null) {
-        history.push('/unknown')
+        history.push(book.unknown)
       }
     }
   }, [posts]);
