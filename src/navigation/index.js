@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { News } from '../Components/News';
 import { Header } from '../Components/Header';
 import { book } from './book';
@@ -15,6 +15,7 @@ export const Routes = () => (
                 component = { News }
                 path = { book.news }
             />
+            <Redirect to =  {book.news } />
         </Switch>
     </>
 )
