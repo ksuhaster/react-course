@@ -8,6 +8,7 @@ export const useNews = () => {
     useEffect(() => {
         (async () => {
             const posts = await api.getPosts();
+            console.log('сходили за posts');
             setPosts(posts);
         })();
     }, []);
