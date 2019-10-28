@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { api } from './api';
+import { useLocalStorage } from './useLocalStorage';
 
 export const useNews = () => {
-    const [ posts, setPosts ] = useState([]);
+    const [ posts, setPosts ] = useLocalStorage('postsCache', []);
 
     useEffect(() => {
         (async () => {
