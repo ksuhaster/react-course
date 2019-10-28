@@ -6,7 +6,8 @@ import { history } from './navigation/history';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <Router history = { history }>
+    <Router
+        history = { history }>
         <Routes />
     </Router>
 , document.getElementById('root'));
