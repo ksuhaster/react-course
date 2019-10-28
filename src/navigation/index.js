@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { News } from '../Components/News';
 import { NewsOne } from '../Components/NewsOne';
 import { Header } from '../Components/Header';
+import { Unknown } from '../Components/Unknown';
 import { book } from './book';
 
 export const Routes = () => (
@@ -21,7 +22,11 @@ export const Routes = () => (
                 component = { News }
                 path = { book.news }
             />
-           <Redirect to =  {book.news } />
+            <Route
+                component = { Unknown }
+                path = { book.unknown }
+            />
+           <Redirect to = {book.unknown } />
         </Switch>
     </>
 )
