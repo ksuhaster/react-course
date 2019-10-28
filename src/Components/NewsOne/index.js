@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import { Article } from '../Article';
 import { Loader } from '../../Assets/Loader';
 import { useNews } from '../News/useNews';
+import { history } from '../../navigation/history';
 
 export const NewsOne = () => {
   const { id } = useParams();
@@ -21,6 +22,9 @@ export const NewsOne = () => {
   useEffect(() => {
     if (posts.length > 0) {
       setShowLoader(false);
+      if (article === null) {
+        history.push('/unknown')
+      }
     }
   }, [posts]);
 
