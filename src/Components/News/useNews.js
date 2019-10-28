@@ -11,6 +11,7 @@ export const useNews = () => {
         console.log('go for the posts');
         (async () => {
             const posts = await api.getPosts();
+            console.log('сходили за posts');
             setPosts(posts);
             setPostsTime(Date.now());
         })();
