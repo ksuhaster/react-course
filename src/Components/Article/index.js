@@ -31,7 +31,7 @@ export const Article = (article) => {
         </div>
       </header>
       <article>
-        <h3><a className="article-title" href="/news/">{ article.title }</a></h3>
+        <h3><a className="article-title" href={ "/news/" + article.objectId }>{ article.title }</a></h3>
         <p>{article.description}</p>
       </article>
       <footer>
