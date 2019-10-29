@@ -27,7 +27,7 @@ export const NewsOne = () => {
         history.push(book.unknown)
       }
     }
-  }, [posts]);
+  }, [posts, article]);
 
   return (
     <section className = { styles.news }>
