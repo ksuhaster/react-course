@@ -9,22 +9,20 @@ import { book } from '../../navigation/book';
 import { useLocalStorage } from '../News/useLocalStorage';
 
 export const NewsOne = () => {
-  const { id } = useParams();
-  const { posts } = useNews();
-  const [ showLoader, setShowLoader ] = useState(true);
-  const [ authenticated, setAuthenticated ] = useLocalStorage('authenticated', false);
-  let location = useLocation();
-  let article = null;
 
+  // perms
+  const [ authenticated, setAuthenticated ] = useLocalStorage('authenticated', false);
   if (!authenticated) {
     history.push({pathname: book.login, state: {from: location.pathname}})
   }
 
-  const signout = () => {
-    setAuthenticated(false);
-    history.push({pathname: book.login, state: {from: location.pathname}})
-  }
+  const { id } = useParams();
+  const { posts } = useNews();
+  const [ showLoader, setShowLoader ] = useState(true);
+  let location = useLocation();
+  let article = null;
 
+  // find article in JSON by id
   for (var i = 0; i < posts.length; i++){
     if (posts[i].objectId === id){
       article = posts[i];
@@ -40,6 +38,11 @@ export const NewsOne = () => {
       }
     }
   }, [posts, article, authenticated, location.pathname]);
+
+  const signout = () => {
+    setAuthenticated(false);
+    history.push({pathname: book.login, state: {from: location.pathname}})
+  }
 
   return (
     <>
