@@ -39,7 +39,7 @@ export const NewsOne = () => {
         history.push(book.unknown)
       }
     }
-  }, [posts, article]);
+  }, [posts, article, authenticated, location.pathname]);
 
   return (
     <>

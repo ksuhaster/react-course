@@ -6,10 +6,7 @@ export const Login = () => {
     let history = useHistory();
     let location = useLocation();
     const [ authenticated, setAuthenticated ] = useLocalStorage('authenticated', false);
-
-    console.log('location.state', location.state);
     let { from } = location.state || { from: { pathname: '/news' } };
-    console.log('from', from);
 
     if (authenticated) {
         history.push('/news');
