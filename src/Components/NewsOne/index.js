@@ -13,21 +13,13 @@ export const NewsOne = () => {
   const { posts } = useNews();
   const [ showLoader, setShowLoader ] = useState(true);
   const [ authenticated, setAuthenticated ] = useLocalStorage('authenticated', false);
+  
   let article = null;
   
-  const fakeAuth = {
-    isAuthenticated: authenticated,
-    authenticate(cb) {
-        console.log('authenticate');
-        setAuthenticated(true);
-        cb();
-    },
-    signout(cb) {
-        console.log('signout');
-        setAuthenticated(false);
-        cb();
-    }
-  };
+  const signout = () => {
+    setAuthenticated(false);
+    history.push('/login')
+  }
 
   for (var i = 0; i < posts.length; i++){
     if (posts[i].objectId === id){
@@ -51,13 +43,7 @@ export const NewsOne = () => {
   return (
     <>
       { authenticated ? (
-          <button
-            onClick={() => {
-                fakeAuth.signout(() => history.push("/login"));
-            }}
-            >
-            Sign out
-          </button>
+          <button onClick={ signout }>Sign out</button>
         ) : ''
       }
 
