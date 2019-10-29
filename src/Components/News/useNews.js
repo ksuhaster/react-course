@@ -1,4 +1,3 @@
-//import { useEffect } from 'react';
 import { api } from './api';
 import { useLocalStorage } from './useLocalStorage';
 
@@ -10,7 +9,6 @@ export const useNews = () => {
             (Date.now() - postsTime) > 10*60*1000) {
         (async () => {
             const posts = await api.getPosts();
-            console.log('сходили за posts');
             setPosts(posts);
             setPostsTime(Date.now());
         })();
