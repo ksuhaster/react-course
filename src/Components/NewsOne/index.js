@@ -14,9 +14,12 @@ export const NewsOne = () => {
   const [ showLoader, setShowLoader ] = useState(true);
   const [ authenticated, setAuthenticated ] = useLocalStorage('authenticated', false);
   let location = useLocation();
-  
   let article = null;
-  
+
+  if (!authenticated) {
+    history.push({pathname: book.login, state: {from: location.pathname}})
+  }
+
   const signout = () => {
     setAuthenticated(false);
     history.push({pathname: book.login, state: {from: location.pathname}})
@@ -30,9 +33,6 @@ export const NewsOne = () => {
   }
 
   useEffect(() => {
-    if (!authenticated) {
-      history.push({pathname: book.login, state: {from: location.pathname}})
-    }
     if (posts.length > 0) {
       setShowLoader(false);
       if (article === null) {
