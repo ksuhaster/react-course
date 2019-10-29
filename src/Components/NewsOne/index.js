@@ -11,6 +11,7 @@ import { useLocalStorage } from '../News/useLocalStorage';
 export const NewsOne = () => {
 
   // perms
+  let location = useLocation();
   const [ authenticated, setAuthenticated ] = useLocalStorage('authenticated', false);
   if (!authenticated) {
     history.push({pathname: book.login, state: {from: location.pathname}})
@@ -19,7 +20,6 @@ export const NewsOne = () => {
   const { id } = useParams();
   const { posts } = useNews();
   const [ showLoader, setShowLoader ] = useState(true);
-  let location = useLocation();
   let article = null;
 
   // find article in JSON by id
