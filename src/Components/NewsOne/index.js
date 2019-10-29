@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { Article } from '../Article';
 import { Loader } from '../../Assets/Loader';
@@ -13,12 +13,13 @@ export const NewsOne = () => {
   const { posts } = useNews();
   const [ showLoader, setShowLoader ] = useState(true);
   const [ authenticated, setAuthenticated ] = useLocalStorage('authenticated', false);
+  let location = useLocation();
   
   let article = null;
   
   const signout = () => {
     setAuthenticated(false);
-    history.push('/login')
+    history.push({pathname: book.login, state: {from: location.pathname}})
   }
 
   for (var i = 0; i < posts.length; i++){
@@ -30,7 +31,7 @@ export const NewsOne = () => {
 
   useEffect(() => {
     if (!authenticated) {
-      history.push(book.login)
+      history.push({pathname: book.login, state: {from: location.pathname}})
     }
     if (posts.length > 0) {
       setShowLoader(false);
