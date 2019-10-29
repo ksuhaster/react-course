@@ -8,7 +8,6 @@ export const useNews = () => {
 
     if (posts.length === 0 || postsTime === null ||
             (Date.now() - postsTime) > 10*60*1000) {
-        console.log('go for the posts');
         (async () => {
             const posts = await api.getPosts();
             setPosts(posts);
