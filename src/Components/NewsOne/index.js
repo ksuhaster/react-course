@@ -58,7 +58,7 @@ export const NewsOne = () => {
             key = { article.objectId }
             {...article}
           />
-          : ''
+          : null
         )}
       </section>
     </>
