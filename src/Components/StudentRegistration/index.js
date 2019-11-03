@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import './styles.scss';
 import { MyTextInput } from './inputs/myTextInput';
 import { MySelect } from './inputs/mySelect';
+import { useLocalStorage } from '../News/useLocalStorage';
 
 export const StudentRegistration = () => {
   const initialValues = {
@@ -13,16 +14,22 @@ export const StudentRegistration = () => {
     sex: '',
     speciality: ''
   };
+  const [ studentData, setStudentData ] = useLocalStorage('student', initialValues);
+  
   const [ showFormSubmitted, setShowFormSubmitted ] = useState(false);
   const formSubmitted = (
     <span>
         Форма заполнена.<br/><br/>
     </span>
-)
+  )
   
+  const [ formIsNew, setFormIsNew ] = useState(initialValues === studentData);
+
   const submitForm = (values) => {
+    setStudentData(values)
     console.log(values);
     setShowFormSubmitted(true);
+    setFormIsNew(false);
   }
 
   return (
@@ -30,7 +37,7 @@ export const StudentRegistration = () => {
       <h1>Student Registration</h1>
       {showFormSubmitted  ? ( formSubmitted ) : null }
       <Formik
-        initialValues={ initialValues }
+        initialValues={ studentData }
         onSubmit={ submitForm }
       >
       {({errors, touched}) => {
@@ -75,7 +82,9 @@ export const StudentRegistration = () => {
               <option value='manager'>Writer</option>>
             </MySelect>
             <br />
-            <button type='submit'>Submit</button>
+            <button type='submit'>
+                {(formIsNew ? 'Submit' : 'Обновить данные')}
+            </button>
           </Form>
         )
       }}
