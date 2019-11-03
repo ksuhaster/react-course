@@ -4,6 +4,8 @@ import './styles.scss';
 import { MyTextInput } from './inputs/myTextInput';
 import { MySelect } from './inputs/mySelect';
 import { useLocalStorage } from '../News/useLocalStorage';
+import { history } from '../../navigation/history';
+import { book } from '../../navigation/book';
 
 export const StudentRegistration = () => {
   const initialValues = {
@@ -30,6 +32,7 @@ export const StudentRegistration = () => {
     console.log(values);
     setShowFormSubmitted(true);
     setFormIsNew(false);
+    history.push({pathname: book.student})
   }
 
   return (
