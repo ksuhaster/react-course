@@ -6,7 +6,7 @@ import { Loader } from '../../Assets/Loader';
 import { useNews } from '../News/useNews';
 import { history } from '../../navigation/history';
 import { book } from '../../navigation/book';
-import { useLocalStorage } from '../News/useLocalStorage';
+import { useLocalStorage } from '../../helpers/useLocalStorage';
 
 export const NewsOne = () => {
 

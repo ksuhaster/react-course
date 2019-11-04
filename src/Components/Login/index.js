@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useLocalStorage } from '../News/useLocalStorage';
+import { useLocalStorage } from '../../helpers/useLocalStorage';
 
 export const Login = () => {
     let history = useHistory();

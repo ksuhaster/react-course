@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import './styles.scss';
 import { MyTextInput } from './inputs/myTextInput';
 import { MySelect } from './inputs/mySelect';
-import { useLocalStorage } from '../News/useLocalStorage';
+import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { history } from '../../navigation/history';
 import { book } from '../../navigation/book';
 
@@ -17,15 +17,8 @@ export const StudentRegistration = () => {
     speciality: ''
   };
   const [ studentData, setStudentData ] = useLocalStorage('student', initialValues);
-  
   const [ showFormSubmitted, setShowFormSubmitted ] = useState(false);
-  const formSubmitted = (
-    <span>
-        Форма заполнена.<br/><br/>
-    </span>
-  )
-  
-  const [ formIsNew, setFormIsNew ] = useState(initialValues === studentData);
+  const [ formIsNew, setFormIsNew ] = useState(JSON.stringify(initialValues) === JSON.stringify(studentData));
 
   const submitForm = (values) => {
     setStudentData(values)
@@ -38,7 +31,7 @@ export const StudentRegistration = () => {
   return (
     <section className='customer'>
       <h1>Student Registration</h1>
-      {showFormSubmitted  ? ( formSubmitted ) : null }
+      {showFormSubmitted  ? ( 'Форма заполнена.<br/><br/>' ) : null }
       <Formik
         initialValues={ studentData }
         onSubmit={ submitForm }

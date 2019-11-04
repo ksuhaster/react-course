@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useLocalStorage } from '../News/useLocalStorage';
+import { useLocalStorage } from '../../helpers/useLocalStorage';
 
 export const Student = () => {
 
