@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch, Route, Redirect  } from 'react-router-dom';
 import { News } from '../Components/News';
 import { NewsOne } from '../Components/NewsOne';
+import { Student } from '../Components/Student';
+import { StudentRegistration } from '../Components/StudentRegistration';
 import { Header } from '../Components/Header';
 import { Unknown } from '../Components/Unknown';
 import { Login } from '../Components/Login';
@@ -22,6 +24,16 @@ export const Routes = () => (
                 exact
                 component = { News }
                 path = { book.news }
+            />
+            <Route
+                exact
+                component = { Student }
+                path = { book.student }
+            />
+            <Route
+                exact
+                component = { StudentRegistration }
+                path = { book.student_registration }
             />
             <Route
                 component = { Unknown }
