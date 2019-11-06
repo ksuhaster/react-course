@@ -8,7 +8,7 @@ export const MySelect = ({ label, children, ...props }) => {
   
     return (
       <>
-        <label htmlFor={ props.id || props.name }>{label}</label>
+        <label htmlFor={ props.id || props.name } className={ props.className }>{label}</label>
         <select { ...props } {...field} >
           { children }
         </select>

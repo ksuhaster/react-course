@@ -9,10 +9,10 @@ import { book } from '../../navigation/book';
 
 export const StudentRegistration = () => {
   const initialValues = {
-    firstName: '',
+    firstName: '',  // string & required, all too // if error = red border input+label, error text
     surname: '',
-    age: '',
-    email: '',
+    age: '',  //6-60, non-required
+    email: '',  // regexp
     sex: '',
     speciality: ''
   };
@@ -21,12 +21,49 @@ export const StudentRegistration = () => {
   const [ formIsNew, setFormIsNew ] = useState(JSON.stringify(initialValues) === JSON.stringify(studentData));
 
   const submitForm = (values) => {
-    setStudentData(values)
+    setStudentData(values);
     console.log(values);
     setShowFormSubmitted(true);
     setFormIsNew(false);
     history.push({pathname: book.student})
-  }
+  };
+
+  const validateForm = (values) => {
+      let errors = {};
+
+      if(!values.firstName || typeof values.firstName !== 'string') {
+          errors.firstName = 'Required text';
+      }
+
+      if(!values.surname) {
+          errors.surname = 'Required text';
+      }
+
+      if (values.age) {
+          try {
+              let age = parseInt(values.age);
+              if (typeof age !== 'number' || age < 6 || age > 60) {
+                  errors.age = 'Should be number 6-60';
+              }
+          } catch {
+              errors.age = 'Should be number 6-60';
+          }
+      }
+
+      if(!values.email) {
+          errors.email = 'Required email';
+      }
+
+      if(!values.sex) {
+          errors.sex = 'Required sex';
+      }
+
+      if(!values.speciality) {
+          errors.speciality = 'Required';
+      }
+
+      return errors;
+  };
 
   return (
     <section className='customer'>
@@ -35,6 +72,7 @@ export const StudentRegistration = () => {
       <Formik
         initialValues={ studentData }
         onSubmit={ submitForm }
+        validate={ validateForm }
       >
       {({errors, touched}) => {
         return (
@@ -44,6 +82,7 @@ export const StudentRegistration = () => {
               name='firstName'
               type='text'
               placeholder='John'
+              className={errors.firstName ? 'error' : null}
             />
             <br />
             <MyTextInput
@@ -51,13 +90,15 @@ export const StudentRegistration = () => {
               name='surname'
               type='text'
               placeholder='Black'
+              className={errors.surname ? 'error' : null}
             />
             <br />
             <MyTextInput
               label='Age'
               name='age'
-              type='integer'
+              type='number'
               placeholder='20'
+              className={errors.age ? 'error' : null}
             />
             <br />
             <MyTextInput
@@ -65,13 +106,14 @@ export const StudentRegistration = () => {
               name='email'
               type='email'
               placeholder='John@gmail.com'
+              className={errors.email ? 'error' : null}
             />
             <br />
-            <label htmlFor='sex' />
+            <label htmlFor='sex' className={errors.sex ? 'error' : null} />Sex:
             <input type='radio' name='sex' value='male' /> Male
             <input type='radio' name='sex' value='female' /> Female
             <br />
-            <MySelect label='Speciality' name='speciality'>
+            <MySelect label='Speciality' name='speciality' className={errors.speciality ? 'error' : null}>
               <option value=''>Select your speciality</option>>
               <option value='designer'>Designer</option>>
               <option value='developer'>Developer</option>>
