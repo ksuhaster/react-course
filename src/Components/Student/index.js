@@ -4,7 +4,7 @@ import { useLocalStorage } from '../../helpers/useLocalStorage';
 
 export const Student = () => {
 
-    const [ studentData, setStudentData ] = useLocalStorage('student', null);
+    const [ studentData ] = useLocalStorage('student', null);
     let s = studentData
 
   return (
