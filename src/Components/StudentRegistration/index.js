@@ -12,6 +12,8 @@ export const StudentRegistration = () => {
   const initialValues = {
     firstName: '',
     surname: '',
+    password: '',
+    confirmpassword: '',
     age: '',
     email: '',
     sex: '',
@@ -27,6 +29,14 @@ export const StudentRegistration = () => {
           .min(2, 'Too Short!')
           .max(50, 'Too Long!')
           .required('Required'),
+      password: Yup.string()
+          .required('Required')
+          .min(10, 'Too short - should be 10 chars minimum.')
+          .matches(/[A-Za-z]/, 'Must have symbols')
+          .matches(/\d.*?\d.*?\d/, 'Must have min 3 numbers'),
+      confirmpassword: Yup.string()
+          .oneOf([Yup.ref('password'), null], 'Should be equal to Password')
+          .required('Confirm Password is required'),
       age: Yup.number()
           .min(6)
           .max(60),
@@ -83,6 +93,20 @@ export const StudentRegistration = () => {
               type='text'
               placeholder='Black'
               className={errors.surname ? 'error' : null}
+            />
+            <br />
+            <MyTextInput
+              label='Password'
+              name='password'
+              type='password'
+              className={errors.password ? 'error' : null}
+            />
+            <br />
+            <MyTextInput
+              label='Confirm Password'
+              name='confirmpassword'
+              type='password'
+              className={errors.password ? 'error' : null}
             />
             <br />
             <MyTextInput
