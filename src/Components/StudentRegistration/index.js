@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import './styles.scss';
 import { MyTextInput } from './inputs/myTextInput';
 import { MySelect } from './inputs/mySelect';
-import { MyRadio } from './inputs/myRadio';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { history } from '../../navigation/history';
 import { book } from '../../navigation/book';
@@ -18,13 +17,11 @@ export const StudentRegistration = () => {
     speciality: ''
   };
   const [ studentData, setStudentData ] = useLocalStorage('student', initialValues);
-  const [ showFormSubmitted, setShowFormSubmitted ] = useState(false);
   const [ formIsNew, setFormIsNew ] = useState(JSON.stringify(initialValues) === JSON.stringify(studentData));
 
   const submitForm = (values) => {
     setStudentData(values);
     console.log(values);
-    setShowFormSubmitted(true);
     setFormIsNew(false);
     history.push({pathname: book.student})
   };
@@ -55,9 +52,9 @@ export const StudentRegistration = () => {
           errors.email = 'Required email';
       }
 
-      //if(!values.sex) {
-      //    errors.sex = 'Required sex';
-      //}
+      if(!values.sex) {
+          errors.sex = 'Required sex';
+      }
 
       if(!values.speciality) {
           errors.speciality = 'Required';
@@ -69,7 +66,6 @@ export const StudentRegistration = () => {
   return (
     <section className='customer'>
       <h1>Student Registration</h1>
-      {showFormSubmitted  ? ( 'Форма заполнена.<br/><br/>' ) : null }
       <Formik
         initialValues={ studentData }
         onSubmit={ submitForm }
@@ -110,10 +106,14 @@ export const StudentRegistration = () => {
               className={errors.email ? 'error' : null}
             />
             <br />
-            <MyRadio label='Sex' name='sex' className={errors.sex ? 'error' : null}>
-              <el label='Male' value='male' />
-              <el label='Female' value='female' />
-            </MyRadio>
+            <div className={errors.sex ? 'error' : null}>
+              Sex:
+              <Field type="radio" name="sex" value="male" /> Male
+              <Field type="radio" name="sex" value="female" /> Female
+                { errors.sex && (
+                    <span className='error'>{errors.sex}</span>
+                )}
+            </div>
             <br />
             <MySelect label='Speciality' name='speciality' className={errors.speciality ? 'error' : null}>
               <option value=''>Select your speciality</option>>
