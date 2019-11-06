@@ -9,10 +9,10 @@ import { book } from '../../navigation/book';
 
 export const StudentRegistration = () => {
   const initialValues = {
-    firstName: '',  // string & required, all too // if error = red border input+label, error text
+    firstName: '',
     surname: '',
-    age: '',  //6-60, non-required
-    email: '',  // regexp
+    age: '',
+    email: '',
     sex: '',
     speciality: ''
   };
@@ -50,7 +50,7 @@ export const StudentRegistration = () => {
           }
       }
 
-      if(!values.email) {
+      if(!values.email || !(/\S+@\S+\.\S+/).test(values.email) ) {
           errors.email = 'Required email';
       }
 
@@ -109,9 +109,10 @@ export const StudentRegistration = () => {
               className={errors.email ? 'error' : null}
             />
             <br />
-            <label htmlFor='sex' className={errors.sex ? 'error' : null} />Sex:
-            <input type='radio' name='sex' value='male' /> Male
-            <input type='radio' name='sex' value='female' /> Female
+            <label htmlFor='sex' className={errors.sex ? 'error' : null}>Sex:
+              <input type='radio' name='sex' value='male' /> Male
+              <input type='radio' name='sex' value='female' /> Female
+            </label>
             <br />
             <MySelect label='Speciality' name='speciality' className={errors.speciality ? 'error' : null}>
               <option value=''>Select your speciality</option>>

@@ -7,14 +7,14 @@ export const MySelect = ({ label, children, ...props }) => {
     });
   
     return (
-      <>
-        <label htmlFor={ props.id || props.name } className={ props.className }>{label}</label>
+      <div className={ props.className }>
+        <label htmlFor={ props.id || props.name }>{label}</label>
         <select { ...props } {...field} >
           { children }
         </select>
         { meta.touched && meta.error && (
           <span className='error'>{meta.error}</span>
         )}
-      </>
+      </div>
     );
   }
