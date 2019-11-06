@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import './styles.scss';
 import { MyTextInput } from './inputs/myTextInput';
 import { MySelect } from './inputs/mySelect';
+import { MyRadio } from './inputs/myRadio';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { history } from '../../navigation/history';
 import { book } from '../../navigation/book';
@@ -54,9 +55,9 @@ export const StudentRegistration = () => {
           errors.email = 'Required email';
       }
 
-      if(!values.sex) {
-          errors.sex = 'Required sex';
-      }
+      //if(!values.sex) {
+      //    errors.sex = 'Required sex';
+      //}
 
       if(!values.speciality) {
           errors.speciality = 'Required';
@@ -109,10 +110,10 @@ export const StudentRegistration = () => {
               className={errors.email ? 'error' : null}
             />
             <br />
-            <label htmlFor='sex' className={errors.sex ? 'error' : null}>Sex:
-              <input type='radio' name='sex' value='male' /> Male
-              <input type='radio' name='sex' value='female' /> Female
-            </label>
+            <MyRadio label='Sex' name='sex' className={errors.sex ? 'error' : null}>
+              <el label='Male' value='male' />
+              <el label='Female' value='female' />
+            </MyRadio>
             <br />
             <MySelect label='Speciality' name='speciality' className={errors.speciality ? 'error' : null}>
               <option value=''>Select your speciality</option>>
