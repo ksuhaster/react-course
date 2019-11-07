@@ -2,7 +2,7 @@
 import { types } from './types';
 
 export const studentActions = Object.freeze({
-    setName: (payload) => {
+    setStudent: (payload) => {
         return {
             type: types.SET_NAME,
             payload

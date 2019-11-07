@@ -64,7 +64,7 @@ export const StudentRegistration = () => {
   const [ formIsNew, setFormIsNew ] = useState(JSON.stringify(initialValues) === JSON.stringify(studentData));
 
   const saveStudent = (values) => {
-      dispatch(studentActions.setName(values))
+      dispatch(studentActions.setStudent(values))
   };
 
   const submitForm = (values) => {
