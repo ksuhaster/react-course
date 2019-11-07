@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import './styles.scss';
 import { MyTextInput } from './inputs/myTextInput';
 import { MySelect } from './inputs/mySelect';
-import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { history } from '../../navigation/history';
 import { book } from '../../navigation/book';
+import { studentActions } from '../../bus/student/actions'
 
 export const StudentRegistration = () => {
   const initialValues = {
@@ -58,11 +59,16 @@ export const StudentRegistration = () => {
           .required('Required'),
   });
 
-  const [ studentData, setStudentData ] = useLocalStorage('student', initialValues);
+  const dispatch = useDispatch();
+  const { studentData } = useSelector((state) => state.student) || initialValues;
   const [ formIsNew, setFormIsNew ] = useState(JSON.stringify(initialValues) === JSON.stringify(studentData));
 
+  const saveStudent = (values) => {
+      dispatch(studentActions.setName(values))
+  };
+
   const submitForm = (values) => {
-    setStudentData(values);
+    saveStudent(values);
     console.log(values);
     setFormIsNew(false);
     history.push({pathname: book.student})
