@@ -69,7 +69,6 @@ export const StudentRegistration = () => {
 
   const submitForm = (values) => {
     saveStudent(values);
-    console.log(values);
     setFormIsNew(false);
     history.push({pathname: book.student})
   };
