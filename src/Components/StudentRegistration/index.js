@@ -111,7 +111,7 @@ export const StudentRegistration = () => {
               label='Confirm Password'
               name='confirmpassword'
               type='password'
-              className={errors.password ? 'error' : null}
+              className={errors.confirmpassword ? 'error' : null}
             />
             <br />
             <MyTextInput
