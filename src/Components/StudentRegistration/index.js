@@ -51,17 +51,13 @@ export const StudentRegistration = () => {
 
   const dispatch = useDispatch();
   let studentData = useSelector((state) => state.student);
-  console.log('data', studentData);
-
 
   const saveStudent = (values) => {
-      console.log('saveStudent', values);
       dispatch(studentActions.setStudent(values))
   };
 
   const submitForm = (values) => {
     saveStudent(values);
-    console.log('saved', values);
     history.push({pathname: book.student})
   };
 

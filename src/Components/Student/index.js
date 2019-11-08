@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 export const Student = () => {
 
     const studentData = useSelector((state) => state.student);
-    console.log('studentData', studentData);
-    const s = studentData;
+    let s = studentData;
 
   return (
     <>
