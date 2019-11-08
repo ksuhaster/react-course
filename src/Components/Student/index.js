@@ -1,11 +1,12 @@
 
 import React from 'react';
-import { useLocalStorage } from '../../helpers/useLocalStorage';
+import { useSelector } from "react-redux";
 
 export const Student = () => {
 
-    const [ studentData ] = useLocalStorage('student', null);
-    let s = studentData
+    const studentData = useSelector((state) => state.student);
+    console.log('studentData', studentData);
+    const s = studentData;
 
   return (
     <>

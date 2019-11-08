@@ -10,16 +10,6 @@ import { book } from '../../navigation/book';
 import { studentActions } from '../../bus/student/actions'
 
 export const StudentRegistration = () => {
-  const initialValues = {
-    firstName: '',
-    surname: '',
-    password: '',
-    confirmpassword: '',
-    age: '',
-    email: '',
-    sex: '',
-    speciality: ''
-  };
 
   const validationSchema = Yup.object().shape({
       firstName: Yup.string()
@@ -60,16 +50,18 @@ export const StudentRegistration = () => {
   });
 
   const dispatch = useDispatch();
-  const { studentData } = useSelector((state) => state.student) || initialValues;
-  const [ formIsNew, setFormIsNew ] = useState(JSON.stringify(initialValues) === JSON.stringify(studentData));
+  let studentData = useSelector((state) => state.student);
+  console.log('data', studentData);
+
 
   const saveStudent = (values) => {
+      console.log('saveStudent', values);
       dispatch(studentActions.setStudent(values))
   };
 
   const submitForm = (values) => {
     saveStudent(values);
-    setFormIsNew(false);
+    console.log('saved', values);
     history.push({pathname: book.student})
   };
 
@@ -147,7 +139,7 @@ export const StudentRegistration = () => {
             </MySelect>
             <br />
             <button type='submit'>
-                {(formIsNew ? 'Submit' : 'Обновить данные')}
+                {(studentData.formIsNew ? 'Submit' : 'Обновить данные')}
             </button>
           </Form>
         )
