@@ -9,7 +9,7 @@ export const Student = () => {
 
   return (
     <>
-    {s ? (
+    {!s.formIsNew ? (
     <section>
         firstName: {s.firstName} <br />
         surname: {s.surname} <br />

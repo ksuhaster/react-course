@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -57,6 +57,7 @@ export const StudentRegistration = () => {
   };
 
   const submitForm = (values) => {
+    values.formIsNew = false;
     saveStudent(values);
     history.push({pathname: book.student})
   };
