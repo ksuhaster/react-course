@@ -1,0 +1,19 @@
+import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+
+import { peopleActions } from '../../../bus/people/actions';
+
+export const usePeopleFetch = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(peopleActions.fetchAsync());
+    }, [dispatch]);
+
+    const {data, isFetching} = useSelector((state) => state.people);
+
+    return {
+        data,
+        isFetching
+    }
+};

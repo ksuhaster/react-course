@@ -1,16 +1,8 @@
-import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-
-import { peopleActions } from '../../bus/people/actions';
+import React from 'react';
+import { usePeopleFetch } from './hooks/usePeopleFetch';
 
 export const People = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(peopleActions.fetchAsync());
-    }, [dispatch]);
-
-    const { data, isFetching } = useSelector((state) => state.people);
+    const { isFetching, data } = usePeopleFetch();
 
     const loader = isFetching && (
         <p>Loading data from API...</p>
