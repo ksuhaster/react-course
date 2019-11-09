@@ -15,6 +15,7 @@ import * as Views from '../views'
 
 // Domains
 import { People } from '../bus/people';
+import { Person } from '../bus/people/person';
 
 export const Routes = () => (
     <>
@@ -46,6 +47,12 @@ export const Routes = () => (
             <Route exact path = { book.people }>
                 <Views.Facade>
                     <People />
+                </Views.Facade>
+            </Route>
+
+            <Route exact path = { book.person }>
+                <Views.Facade>
+                    <Person />
                 </Views.Facade>
             </Route>
 

@@ -8,5 +8,13 @@ export const api = Object.freeze({
             })
         }
     },
-
+    /*
+    person: (id) => {
+        fetch: () => {
+            return fetch(`${root}/people/${id}/`, {
+                method: 'GET'
+            })
+        }
+    },
+    */
 });
