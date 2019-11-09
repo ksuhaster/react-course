@@ -2,7 +2,11 @@ import React from 'react';
 import { usePeopleFetch } from './hooks/usePeopleFetch';
 
 export const People = () => {
-    const { isFetching, data } = usePeopleFetch();
+    const { isFetching, data, error } = usePeopleFetch();
+
+    const errorMessage = error.status === 404 && (
+      <p>Not found!</p>
+    );
 
     const loader = isFetching && (
         <p>Loading data from API...</p>
@@ -15,6 +19,7 @@ export const People = () => {
     return (
         <>
             <h1>People</h1>
+            { errorMessage }
             { loader }
             <ul>
                 { list }

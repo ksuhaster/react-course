@@ -10,10 +10,11 @@ export const usePeopleFetch = () => {
         dispatch(peopleActions.fetchAsync());
     }, [dispatch]);
 
-    const {data, isFetching} = useSelector((state) => state.people);
+    const {data, isFetching, error } = useSelector((state) => state.people);
 
     return {
         data,
-        isFetching
+        isFetching,
+        error
     }
 };
