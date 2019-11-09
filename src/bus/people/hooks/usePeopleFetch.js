@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import { peopleActions } from '../../../bus/people/actions';
+import { peopleActions } from '../actions';
 
 export const usePeopleFetch = () => {
     const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { News } from '../Components/News';
 import { NewsOne } from '../Components/NewsOne';
 import { Student } from '../Components/Student';
 import { StudentRegistration } from '../Components/StudentRegistration';
-import { People } from '../Components/People';
+import { People } from '../bus/people';
 import { Header } from '../Components/Header';
 import { Unknown } from '../Components/Unknown';
 import { Login } from '../Components/Login';

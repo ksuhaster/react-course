@@ -1,7 +1,11 @@
 import React from 'react';
 import { usePeopleFetch } from './hooks/usePeopleFetch';
+import { useLoading } from './hooks/useLoading';
 
 export const People = () => {
+    const { isDataLoading } = useLoading();
+    const status = isDataLoading && 'NOT READY';
+
     const { isFetching, data, error } = usePeopleFetch();
 
     const errorMessage = error.status === 404 && (
@@ -18,7 +22,7 @@ export const People = () => {
 
     return (
         <>
-            <h1>People</h1>
+            <h1>People { status }</h1>
             { errorMessage }
             { loader }
             <ul>
