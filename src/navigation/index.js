@@ -4,6 +4,7 @@ import { News } from '../Components/News';
 import { NewsOne } from '../Components/NewsOne';
 import { Student } from '../Components/Student';
 import { StudentRegistration } from '../Components/StudentRegistration';
+import { People } from '../Components/People';
 import { Header } from '../Components/Header';
 import { Unknown } from '../Components/Unknown';
 import { Login } from '../Components/Login';
@@ -34,6 +35,11 @@ export const Routes = () => (
                 exact
                 component = { StudentRegistration }
                 path = { book.student_registration }
+            />
+            <Route
+                exact
+                component = { People }
+                path = { book.people }
             />
             <Route
                 component = { Unknown }
