@@ -1,6 +1,8 @@
 // Types
 import { types } from './types';
 
+import { api } from '../../api';
+
 export const peopleActions = Object.freeze({
     // Sync
     fill: (payload) => {
@@ -14,5 +16,10 @@ export const peopleActions = Object.freeze({
         dispatch({
             type: types.PEOPLE_FETCH_ASYNC
         });
+
+        const response = await api.people.fetch();
+        const { results } = await response.json();
+
+        dispatch(peopleActions.fill(results));
     }
 });

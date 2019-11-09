@@ -10,11 +10,18 @@ export const People = () => {
         dispatch(peopleActions.fetchAsync());
     }, [dispatch]);
 
+    const { data } = useSelector((state) => state.people);
+
+    const list = data.map(({name}, index) => (
+        <li key = { index }>{ name }</li>
+    ));
+
     return (
         <>
             <h1>People</h1>
+            <ul>
+                { list }
+            </ul>
         </>
     )
 };
-
-
