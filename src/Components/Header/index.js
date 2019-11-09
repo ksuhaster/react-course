@@ -1,8 +1,8 @@
 import React from 'react';
-import './styles.scss';
+import styles from './styles.module.scss';
 
-export const Header = () => {
+export const Header = ({ children }) => {
   return (
-    <h1 className="title">Header</h1>
+    <h1 className={ styles.title }>{ children }</h1>
   )
 };
