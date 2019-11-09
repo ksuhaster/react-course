@@ -21,6 +21,13 @@ export const peopleActions = Object.freeze({
             payload
         }
     },
+    setFetchingError: (error) => {
+        return {
+            type: types.PEOPLE_SET_FETCHING_ERROR,
+            error: true,
+            payload: error
+        }
+    },
     // Async
     fetchAsync: () => async (dispatch) => {
         dispatch({
@@ -30,9 +37,19 @@ export const peopleActions = Object.freeze({
         dispatch(peopleActions.startFetching());
 
         const response = await api.people.fetch();
-        const { results } = await response.json();
 
-        dispatch(peopleActions.fill(results));
+        if (response.status === 200) {
+            const { results } = await response.json();
+
+            dispatch(peopleActions.fill(results));
+        } else {
+            const error = {
+                status: response.status
+            };
+
+            dispatch(peopleActions.setFetchingError(error));
+        }
+
         dispatch(peopleActions.stopFetching());
     }
 });
