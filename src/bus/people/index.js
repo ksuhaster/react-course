@@ -1,7 +1,7 @@
 import React from 'react';
 import { usePeopleFetch } from './hooks/usePeopleFetch';
 import { useLoading } from './hooks/useLoading';
-import { Header } from '../../Components/Header';
+import { Header } from '../../components/Header';
 
 export const People = () => {
     const { isDataLoading } = useLoading();

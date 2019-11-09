@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route, Redirect  } from 'react-router-dom';
-import { News } from '../Components/News';
-import { NewsOne } from '../Components/NewsOne';
-import { Student } from '../Components/Student';
-import { StudentRegistration } from '../Components/StudentRegistration';
-import { Header } from '../Components/Header';
-import { Unknown } from '../Components/Unknown';
-import { Login } from '../Components/Login';
+import { News } from '../components/News';
+import { NewsOne } from '../components/NewsOne';
+import { Student } from '../components/Student';
+import { StudentRegistration } from '../components/StudentRegistration';
+import { Header } from '../components/Header';
+import { Unknown } from '../components/Unknown';
+import { Login } from '../components/Login';
 // Routes
 import { book } from './book';
 
