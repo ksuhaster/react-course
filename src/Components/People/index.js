@@ -10,15 +10,20 @@ export const People = () => {
         dispatch(peopleActions.fetchAsync());
     }, [dispatch]);
 
-    const { data } = useSelector((state) => state.people);
+    const { data, isFetching } = useSelector((state) => state.people);
 
-    const list = data.map(({name}, index) => (
-        <li key = { index }>{ name }</li>
+    const loader = isFetching && (
+        <p>Loading data from API...</p>
+    );
+
+    const list = isFetching || data.map(({name}, index) => (
+        <li key = { index }><a href={index}>{ name }</a></li>
     ));
 
     return (
         <>
             <h1>People</h1>
+            { loader }
             <ul>
                 { list }
             </ul>

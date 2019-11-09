@@ -1,7 +1,8 @@
 export const types = Object.freeze({
     // Sync
+    PEOPLE_START_FETCHING: 'PEOPLE_START_FETCHING',
+    PEOPLE_STOP_FETCHING: 'PEOPLE_STOP_FETCHING',
     PEOPLE_FILL: 'PEOPLE_FILL',
-
 
     // Async
     PEOPLE_FETCH_ASYNC: 'PEOPLE_FETCH_ASYNC',
