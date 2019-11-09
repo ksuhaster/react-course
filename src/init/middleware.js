@@ -1,5 +1,6 @@
 import { compose } from 'redux';
 import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
 
 export const logger = createLogger({
     duration: true,
@@ -16,11 +17,10 @@ export const logger = createLogger({
 });
 
 const __DEV__ = process.env.NODE_ENV === 'development';
-
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = __DEV__ && devtools ? devtools : compose;
 
-const middleware = [];
+const middleware = [thunk];
 
 if (__DEV__) {
     middleware.push(logger);
