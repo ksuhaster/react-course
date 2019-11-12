@@ -8,13 +8,11 @@ export const api = Object.freeze({
             })
         }
     },
-    /*
-    person: (id) => {
-        fetch: () => {
+    person: {
+        fetch: (id) => {
             return fetch(`${root}/people/${id}/`, {
                 method: 'GET'
             })
         }
     },
-    */
 });

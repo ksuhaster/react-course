@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePeopleFetch } from './hooks/usePeopleFetch';
+import { usePersonFetch } from './hooks/usePersonFetch';
 import { useLoading } from './hooks/useLoading';
 import { Header } from '../../components/Header';
 import { useParams } from 'react-router-dom';
@@ -11,7 +11,8 @@ export const Person = () => {
     const { isDataLoading } = useLoading();
     const status = isDataLoading && 'NOT READY';
 
-    const { isFetching, data, error } = usePeopleFetch();
+    console.log('id before fetch', id);
+    const { isFetching, data, error } = usePersonFetch(id);
 
     const errorMessage = error.status === 404 && (
         <p>Not found!</p>
@@ -21,18 +22,17 @@ export const Person = () => {
         <p>Loading data from API...</p>
     );
 
-    console.log('id', id);
-    console.log('data[id]', data[id]);
-    const person = data && data[id];
+    console.log('id index.js', id);
+    console.log('person index.js', data);
+    console.log('error index.js', error);
 
     return (
         <>
             <Header>Person { status }</Header>
             { errorMessage }
             { loader }
-
-            { (person) ? (
-                person.name
+            { (data) ? (
+                data.name
             ): null }
 
         </>
