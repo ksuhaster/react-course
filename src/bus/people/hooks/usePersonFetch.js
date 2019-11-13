@@ -5,13 +5,14 @@ import { personActions } from '../actions';
 
 
 export const usePersonFetch = (id) => {
-    const {data, isFetching, error} = useSelector((state) => state.person);
     const dispatch = useDispatch();
 
     useEffect(() => {
         console.log('useEffect', id);
         dispatch(personActions.fetchAsync(id));
-    }, [dispatch, id]);
+    }, [dispatch]);
+
+    const {data, isFetching, error} = useSelector((state) => state.people);
 
     console.log('person usePersonFetch', data);
 

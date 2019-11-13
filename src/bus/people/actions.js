@@ -37,7 +37,6 @@ export const peopleActions = Object.freeze({
         dispatch(peopleActions.startFetching());
 
         const response = await api.people.fetch();
-        console.log('response fetchAsync', response);
 
         if (response.status === 200) {
             const { results } = await response.json();
@@ -91,15 +90,10 @@ export const personActions = Object.freeze({
         dispatch(personActions.startFetching());
 
         const response = await api.person.fetch(parseInt(id)+1);
-        console.log('response fetchAsync', response);
 
         if (response.status === 200) {
             const { results } = await response.json();
-
-            console.log('results fetchAsync', results);
-
             dispatch(personActions.fill(results));
-            console.log('results fetchAsync', results);
         } else {
             const error = {
                 status: response.status

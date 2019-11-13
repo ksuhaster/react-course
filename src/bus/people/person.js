@@ -11,7 +11,6 @@ export const Person = () => {
     const { isDataLoading } = useLoading();
     const status = isDataLoading && 'NOT READY';
 
-    console.log('id before fetch', id);
     const { isFetching, data, error } = usePersonFetch(id);
 
     const errorMessage = error.status === 404 && (
@@ -21,10 +20,6 @@ export const Person = () => {
     const loader = isFetching && (
         <p>Loading data from API...</p>
     );
-
-    console.log('id index.js', id);
-    console.log('person index.js', data);
-    console.log('error index.js', error);
 
     return (
         <>
