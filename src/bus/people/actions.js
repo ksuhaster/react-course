@@ -91,7 +91,6 @@ export const personActions = Object.freeze({
 
         if (response.status === 200) {
             const results = await response.json();
-            console.log('results', results);
             dispatch(personActions.fill(results));
         } else {
             const error = {
