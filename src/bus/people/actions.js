@@ -40,7 +40,6 @@ export const peopleActions = Object.freeze({
 
         if (response.status === 200) {
             const { results } = await response.json();
-            console.log('PEOPLE fetchAsync results', results)
             dispatch(peopleActions.fill(results));
         } else {
             const error = {
@@ -82,7 +81,6 @@ export const personActions = Object.freeze({
     },
     // Async
     fetchAsync: (id) => async (dispatch) => {
-        console.log('actions.js fetchAsync', id);
         dispatch({
             type: types.PERSON_FETCH_ASYNC
         });
@@ -92,8 +90,8 @@ export const personActions = Object.freeze({
         const response = await api.person.fetch(id);
 
         if (response.status === 200) {
-            const { results } = await response.json();
-            console.log('PERSON fetchAsync results', results)
+            const results = await response.json();
+            console.log('results', results);
             dispatch(personActions.fill(results));
         } else {
             const error = {

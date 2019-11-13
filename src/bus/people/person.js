@@ -11,7 +11,7 @@ export const Person = () => {
     const { isDataLoading } = useLoading();
     const status = isDataLoading && 'NOT READY';
 
-    const { isFetching, data, error } = usePersonFetch(id);
+    const {data, isFetching, error} = usePersonFetch(id);
 
     const errorMessage = error.status === 404 && (
         <p>Not found!</p>
@@ -26,9 +26,9 @@ export const Person = () => {
             <Header>Person { status }</Header>
             { errorMessage }
             { loader }
-            { (data) ? (
-                data.name
-            ): null }
+            name: { data.name}<br />
+            height: { data.height}<br />
+
 
         </>
     )

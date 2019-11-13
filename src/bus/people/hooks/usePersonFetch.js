@@ -10,7 +10,7 @@ export const usePersonFetch = (id) => {
     useEffect(() => {
         console.log('useEffect', id);
         dispatch(personActions.fetchAsync(id));
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     const {data, isFetching, error} = useSelector((state) => state.people);
 
