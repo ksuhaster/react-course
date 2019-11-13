@@ -7,4 +7,6 @@ export const book = Object.freeze({
     unknown: '/unknown',
     people: '/people',
     person: '/people/:id',
+    films: '/films',
+    film: '/films/:id',
 });
