@@ -10,9 +10,12 @@ export const api = Object.freeze({
     },
     person: {
         fetch: (id) => {
+            console.log('api fetch id:', id);
+            console.log(`${root}/people/${id}/`);
             return fetch(`${root}/people/${id}/`, {
                 method: 'GET'
             })
+            //return () => {return '{name: "bubu"}';}
         }
     },
 });

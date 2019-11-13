@@ -18,7 +18,7 @@ export const People = () => {
     );
 
     const list = isFetching || data.map(({name}, index) => (
-        <li key = { index }><a href={'/people/' + index}>{ name }</a></li>
+        <li key = { index }><a href={'/people/' + (parseInt(index)+1)}>{ name }</a></li>
     ));
 
     return (
