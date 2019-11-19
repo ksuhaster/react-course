@@ -85,6 +85,7 @@ export const StudentRegistration = () => {
             <MyTextInput
               label='Surname'
               name='surname'
+              id='surname'
               type='text'
               placeholder='Black'
               className={errors.surname ? 'error' : null}
@@ -93,6 +94,7 @@ export const StudentRegistration = () => {
             <MyTextInput
               label='Password'
               name='password'
+              id='password'
               type='password'
               className={errors.password ? 'error' : null}
             />
@@ -100,6 +102,7 @@ export const StudentRegistration = () => {
             <MyTextInput
               label='Confirm Password'
               name='confirmpassword'
+              id='confirmpassword'
               type='password'
               className={errors.confirmpassword ? 'error' : null}
             />
@@ -107,6 +110,7 @@ export const StudentRegistration = () => {
             <MyTextInput
               label='Age'
               name='age'
+              id='age'
               type='number'
               placeholder='20'
               className={errors.age ? 'error' : null}
@@ -115,24 +119,29 @@ export const StudentRegistration = () => {
             <MyTextInput
               label='Email'
               name='email'
+              id='email'
               type='email'
               placeholder='John@gmail.com'
               className={errors.email ? 'error' : null}
             />
             <br />
-            <div className={errors.sex ? 'error' : null}>
+            <div id='sex_div' className={errors.sex ? 'error' : null}>
               Sex:
-              <Field type="radio" name="sex" value="male" /> Male
-              <Field type="radio" name="sex" value="female" /> Female
+              <Field type="radio" name="sex" id="sex_male" value="male" /> Male
+              <Field type="radio" name="sex" id="sex_female" value="female" /> Female
                 { errors.sex && (
                     <span className='error'>{errors.sex}</span>
                 )}
             </div>
             <br />
-            <MySelect label='Speciality' name='speciality' className={errors.speciality ? 'error' : null}>
+            <MySelect
+                label='Speciality'
+                name='speciality'
+                id='speciality'
+                className={errors.speciality ? 'error' : null}>
               <option value=''>Select your speciality</option>>
               <option value='designer'>Designer</option>>
-              <option value='developer'>Developer</option>>
+              <option value='developer' id="speciality_developer">Developer</option>>
               <option value='manager'>Writer</option>>
             </MySelect>
             <br />

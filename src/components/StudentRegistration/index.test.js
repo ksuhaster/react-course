@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { renderHook, act } from '@testing-library/react-hooks'
+import { render, fireEvent, getByTestId } from '@testing-library/react';
 import { StudentRegistration } from "./";
 import { useSelector } from "react-redux";
 
@@ -32,36 +33,88 @@ const init = () => {
     }
 };
 
-describe('Student Registration Form', () => {
-    const { wrapper } = init();
+
+describe('Student Registration: Form has all fields', () => {
+    const { store, wrapper } = init();
+    const state = renderHook(() => store.getState(store));
+    const studentData = state.result.current.student;
 
     const fields = ['firstName', 'surname', 'password', 'confirmpassword', 'age',
         'email', 'sex', 'speciality'];
     for (let field of fields) {
         it(`Has ${field}`, () => {
-            expect(wrapper.find(field)).not.toBeNull();
+            expect(wrapper.find('#'+field)).not.toBeNull();
         });
     }
 
-    it('Has errors on empty submit', () => {
-        wrapper.find('submit').click();
-        console.log(wrapper.find('firstName').className);
+    it('In state, formIsNew: true', () => {
+        expect(studentData.formIsNew).toEqual(true);
     });
 });
 
 
+describe('Student Registration: Empty form submit', () => {
+    const { wrapper } = init();
 
+    const fields = ['firstName', 'surname', 'password', 'confirmpassword', 'email'];
+    for (let field of fields) {
+        it(`Has class=error for ${field}`, () => {
+            wrapper.find('#submit').simulate('click');
+            expect(wrapper.find('input#'+field).hasClass('error'));
+        });
+    }
 
-    /*
-    test('enter value', () => {
-        const source = 0;
-        const returnedData = renderHook(() => useCounterManager(source));
-        const prevCount = returnedData.result.current.count;
-        const increase = returnedData.result.current.increase;
-        const incrementedValue = prevCount + 1;
-        act(increase);
-        const receivedValue = returnedData.result.current.count;
-        expect receivedValue.toBe(incrementedValue);
+    it(`Has class=error for speciality`, () => {
+        wrapper.find('#submit').simulate('click');
+        expect(wrapper.find('select#speciality').hasClass('error'));
     });
-    */
-//});
+
+    it(`Has class=error for sex`, () => {
+        wrapper.find('#submit').simulate('click');
+        expect(wrapper.find('#sex_div').hasClass('error'));
+    });
+});
+
+
+describe('Student Registration: Check age limits', () => {
+    const { wrapper } = init();
+    const input = wrapper.find('input#age');
+
+    it(`Age should be 6..60, has error if 5`, () => {
+        input.simulate('change', {target: {value: 5}});
+        wrapper.find('#submit').simulate('click');
+        expect(input.hasClass('error'));
+    });
+
+    it(`Age should be 6..60, has error if 61`, () => {
+        input.simulate('change', { target: {value: 61 } });
+        wrapper.find('#submit').simulate('click');
+        expect(input.hasClass('error'));
+    });
+
+});
+
+describe('Student Registration: Fill form without errors', () => {
+    const { wrapper } = init();
+
+    const fillValues = {
+        firstName: 'asd',
+        surname: 'asd',
+        password: 'asdasdasd123',
+        confirmpassword: 'asdasdasd123',
+        age: 22,
+        email: 'asd@asd.net',
+    };
+
+    it('No errors when fields are filled', () => {
+        for (let fkey of Object.keys(fillValues)) {
+            let input = wrapper.find('input#'+fkey);
+            input.simulate('change', { target: {name: fkey, value: fillValues[fkey] } });
+        }
+        wrapper.find('input#sex_male').simulate('click');
+        wrapper.find('#speciality_developer').simulate('click');
+        wrapper.find('#submit').simulate('click');
+        expect(wrapper.find('.error').length).toBe(0);
+    });
+
+});
