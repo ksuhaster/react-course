@@ -76,6 +76,7 @@ export const StudentRegistration = () => {
             <MyTextInput
               label='First Name'
               name='firstName'
+              id='firstName'
               type='text'
               placeholder='John'
               className={errors.firstName ? 'error' : null}
@@ -135,7 +136,7 @@ export const StudentRegistration = () => {
               <option value='manager'>Writer</option>>
             </MySelect>
             <br />
-            <button type='submit'>
+            <button type='submit' id='submit'>
                 {(studentData.formIsNew ? 'Submit' : 'Обновить данные')}
             </button>
           </Form>

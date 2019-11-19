@@ -5,21 +5,20 @@ import { useSelector } from "react-redux";
 export const Student = () => {
 
     const studentData = useSelector((state) => state.student);
-    let s = studentData;
 
   return (
     <>
-    {!s.formIsNew ? (
-    <section>
-        firstName: {s.firstName} <br />
-        surname: {s.surname} <br />
-        age: {s.age} <br />
-        email: {s.email} <br />
-        sex: {s.sex} <br />
-        speciality: {s.speciality}
+    {!studentData.formIsNew ? (
+    <section id='studentCard'>
+        firstName: {studentData.firstName} <br />
+        surname: {studentData.surname} <br />
+        age: {studentData.age} <br />
+        email: {studentData.email} <br />
+        sex: {studentData.sex} <br />
+        speciality: {studentData.speciality}
     </section>
     ) : (
-    <p>
+    <p id='notExists'>
         Студент еще не создан вы можете создать студента по
         этому <a href="/student/registration">адресу</a>
     </p>
