@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`student reducer: should handle SET_STUDENT action 1`] = `
+Object {
+  "age": "",
+  "confirmpassword": "",
+  "email": "",
+  "firstName": "",
+  "formIsNew": true,
+  "password": "",
+  "sex": "",
+  "speciality": "",
+  "surname": "",
+}
+`;
+
+exports[`student reducer: should return initial state by default 1`] = `
+Object {
+  "age": "",
+  "confirmpassword": "",
+  "email": "",
+  "firstName": "",
+  "formIsNew": true,
+  "password": "",
+  "sex": "",
+  "speciality": "",
+  "surname": "",
+}
+`;

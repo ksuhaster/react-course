@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`film list reducer: should handle FILMS_FETCH_ASYNC action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`film list reducer: should handle FILMS_FILL action 1`] = `
+Object {
+  "data": undefined,
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`film list reducer: should handle FILMS_SET_FETCHING_ERROR action 1`] = `
+Object {
+  "data": Array [],
+  "error": undefined,
+  "isFetching": false,
+}
+`;
+
+exports[`film list reducer: should handle FILMS_START_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": true,
+}
+`;
+
+exports[`film list reducer: should handle FILMS_STOP_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`film list reducer: should return initial state by default 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`one film reducer: should handle FILM_FETCH_ASYNC action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`one film reducer: should handle FILM_FILL action 1`] = `
+Object {
+  "data": undefined,
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`one film reducer: should handle FILM_SET_FETCHING_ERROR action 1`] = `
+Object {
+  "data": Array [],
+  "error": undefined,
+  "isFetching": false,
+}
+`;
+
+exports[`one film reducer: should handle FILM_START_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": true,
+}
+`;
+
+exports[`one film reducer: should handle FILM_STOP_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`one film reducer: should return initial state by default 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
