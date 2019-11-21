@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`one person reducer: should handle PERSON_FETCH_ASYNC action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`one person reducer: should handle PERSON_FILL action 1`] = `
+Object {
+  "data": undefined,
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`one person reducer: should handle PERSON_SET_FETCHING_ERROR action 1`] = `
+Object {
+  "data": Array [],
+  "error": undefined,
+  "isFetching": false,
+}
+`;
+
+exports[`one person reducer: should handle PERSON_START_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": true,
+}
+`;
+
+exports[`one person reducer: should handle PERSON_STOP_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`one person reducer: should return initial state by default 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`person list reducer: should handle PEOPLE_FETCH_ASYNC action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`person list reducer: should handle PEOPLE_FILL action 1`] = `
+Object {
+  "data": undefined,
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`person list reducer: should handle PEOPLE_SET_FETCHING_ERROR action 1`] = `
+Object {
+  "data": Array [],
+  "error": undefined,
+  "isFetching": false,
+}
+`;
+
+exports[`person list reducer: should handle PEOPLE_START_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": true,
+}
+`;
+
+exports[`person list reducer: should handle PEOPLE_STOP_FETCHING action 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
+
+exports[`person list reducer: should return initial state by default 1`] = `
+Object {
+  "data": Array [],
+  "error": false,
+  "isFetching": false,
+}
+`;
