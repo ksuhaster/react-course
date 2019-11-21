@@ -7,7 +7,7 @@ export const MySelect = ({ label, children, ...props }) => {
     });
   
     return (
-      <>
+      <div className={ props.className }>
         <label htmlFor={ props.id || props.name }>{label}</label>
         <select { ...props } {...field} >
           { children }
@@ -15,6 +15,6 @@ export const MySelect = ({ label, children, ...props }) => {
         { meta.touched && meta.error && (
           <span className='error'>{meta.error}</span>
         )}
-      </>
+      </div>
     );
   }

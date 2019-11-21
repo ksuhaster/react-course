@@ -1,13 +1,23 @@
 import React from 'react';
 import { Switch, Route, Redirect  } from 'react-router-dom';
-import { News } from '../Components/News';
-import { NewsOne } from '../Components/NewsOne';
-import { Student } from '../Components/Student';
-import { StudentRegistration } from '../Components/StudentRegistration';
-import { Header } from '../Components/Header';
-import { Unknown } from '../Components/Unknown';
-import { Login } from '../Components/Login';
+import { News } from '../components/News';
+import { NewsOne } from '../components/NewsOne';
+import { Student } from '../components/Student';
+import { StudentRegistration } from '../components/StudentRegistration';
+import { Header } from '../components/Header';
+import { Unknown } from '../components/Unknown';
+import { Login } from '../components/Login';
+// Routes
 import { book } from './book';
+
+// Layouts
+import * as Views from '../views'
+
+// Domains
+import { People } from '../bus/people';
+import { Person } from '../bus/people/person';
+import { Films } from '../bus/films';
+import { Film } from '../bus/films/film';
 
 export const Routes = () => (
     <>
@@ -35,6 +45,31 @@ export const Routes = () => (
                 component = { StudentRegistration }
                 path = { book.student_registration }
             />
+
+            <Route exact path = { book.people }>
+                <Views.Facade>
+                    <People />
+                </Views.Facade>
+            </Route>
+
+            <Route exact path = { book.person }>
+                <Views.Facade>
+                    <Person />
+                </Views.Facade>
+            </Route>
+
+            <Route exact path = { book.films }>
+                <Views.Facade>
+                    <Films />
+                </Views.Facade>
+            </Route>
+
+            <Route exact path = { book.film }>
+                <Views.Facade>
+                    <Film />
+                </Views.Facade>
+            </Route>
+
             <Route
                 component = { Unknown }
                 path = { book.unknown }

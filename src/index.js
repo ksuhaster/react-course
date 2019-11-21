@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
-import { Routes } from './navigation';
-import { history } from './navigation/history';
+import { App } from './App'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <Router
-        history = { history }>
-        <Routes />
-    </Router>
+    <App />
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
